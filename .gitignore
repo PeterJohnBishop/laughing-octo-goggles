@@ -1,6 +1,10 @@
 # If you prefer the allow list template instead of the deny list, see community template:
 # https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
-#
+
+# -----------------
+# Go-specific ignores
+# -----------------
+
 # Binaries for programs and plugins
 *.exe
 *.exe~
@@ -24,9 +28,67 @@ profile.cov
 go.work
 go.work.sum
 
-# env file
+# Environment variables
 .env
 
-# Editor/IDE
-# .idea/
-# .vscode/
+# -----------------
+# Swift/Xcode/SwiftUI ignores
+# -----------------
+
+## Build products
+build/
+DerivedData/
+
+## Xcode workspace/IDE
+*.xcworkspace
+xcuserdata/
+*.xcuserstate
+*.xccheckout
+*.moved-aside
+*.xcuserdatad
+*.xcscmblueprint
+
+## Swift Package Manager
+.swiftpm/
+.build/
+Package.resolved
+
+## CocoaPods
+Pods/
+Podfile.lock
+
+## Carthage
+Carthage/Build/
+
+## Accio dependency manager
+Dependencies/
+.accio/
+
+## Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output/
+
+## Provisioning profiles and signing
+*.mobileprovision
+*.provisionprofile
+*.pem
+
+## Simulator/device data
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+## Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+# -----------------
+# General Editor/OS
+# -----------------
+.idea/
+.vscode/
+.DS_Store
+*.swp
+
