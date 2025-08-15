@@ -1,18 +1,28 @@
 package servegin
 
 import (
+	"log"
 	"net/http"
+	"os"
 	"strings"
 
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt/v5"
+	"github.com/subosito/gotenv"
 )
-
-var jwtSecret = []byte("your-secret-key") // TODO: store in env variable
 
 // AuthMiddleware checks for JWT token in Authorization header
 func AuthMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
+		err := gotenv.Load("./.env")
+		if err != nil {
+			log.Println("Error loading .env file:", err)
+		}
+		secret := os.Getenv("SECRET")
+		if secret == "" {
+			log.Fatalln("SECRET environment variable not set")
+		}
+		var jwtSecret = []byte(secret)
 		authHeader := c.GetHeader("Authorization")
 		if authHeader == "" {
 			c.JSON(http.StatusUnauthorized, gin.H{"error": "Missing Authorization header"})
